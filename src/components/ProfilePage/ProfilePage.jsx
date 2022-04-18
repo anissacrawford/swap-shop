@@ -36,7 +36,7 @@ function ProfilePage (){
                
             )
         })} */}
-            <button  onClick={() => {history.push('/additem');}}>add item</button>
+            <button onClick={() => {history.push('/additem');}}>add item</button>
         </div>
         
         </>
