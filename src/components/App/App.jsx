@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import ShopPage from '../ShopPage/ShopPage'
 
 import './App.css';
 
@@ -97,9 +98,9 @@ function App() {
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
-          <Route>
+          {/* <Route>
             <h1>404</h1>
-          </Route>
+          </Route> */}
         </Switch>
 
 
@@ -110,9 +111,13 @@ function App() {
         </Route>
 
 
+        <Route exact path="/shop">
+          <ShopPage/>
+        </Route>
 
-
-
+        <Route exact path="/swap">
+          <SwapPage/>
+        </Route>
 
 
 
