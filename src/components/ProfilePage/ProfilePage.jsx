@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect} from 'react';
-import Item from '../Item/Item';
+import { useHistory } from 'react-router-dom';
 
 
 function ProfilePage (){
 
     const dispatch = useDispatch();
     const item = useSelector(store => store.item);
+    const history = useHistory();
 
     useEffect(() => {
         // dispatch to get all items to display on the DOM
@@ -17,13 +18,25 @@ function ProfilePage (){
     return (
         <>
         <h1>Profile Page </h1>
-        <h2>Username </h2>
-        
-        <button>add item</button>
+        <h2>Welcome, *username* </h2>
 
         <div>
         <h2>My items</h2>
-            <Item/>
+        {/* {item.map((anItem) => {
+            console.log(anItem);
+            return(
+                <ul key={anItem.id}>
+                    <li>{anItem.username}</li>
+                    <li>{anItem.item_image}</li>
+                    <li>{anItem.item_name}</li>
+                    <li>{anItem.item_description}</li>
+                    <button>edit</button>
+                    <button>delete</button>
+                </ul>
+               
+            )
+        })} */}
+            <button  onClick={() => {history.push('/additem');}}>add item</button>
         </div>
         
         </>

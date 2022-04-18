@@ -23,6 +23,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import ShopPage from '../ShopPage/ShopPage';
 import SwapPage from '../SwapPage/SwapPage';
 import MySwapsPage from '../MySwapsPage/MySwapsPage';
+import AddItemPage from '../AddItemPage/AddItemPage';
 
 import './App.css';
 
@@ -123,6 +124,10 @@ function App() {
 
         <Route exact path="/myswaps">
           <MySwapsPage/>
+        </Route>
+
+        <Route exact path="/additem">
+          <AddItemPage/>
         </Route>
 
         <Footer />
