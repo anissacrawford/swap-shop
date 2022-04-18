@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect} from 'react';
+import Item from '../Item/Item';
 
 
 function ProfilePage (){
@@ -22,20 +23,7 @@ function ProfilePage (){
 
         <div>
         <h2>My items</h2>
-        {item.map((anItem) => {
-            console.log(anItem);
-            return(
-                <ul key={anItem.id}>
-                    <li>{anItem.username}</li>
-                    <li>{anItem.item_image}</li>
-                    <li>{anItem.item_name}</li>
-                    <li>{anItem.item_description}</li>
-                    <button>edit</button>
-                    <button>delete</button>
-                </ul>
-               
-            )
-        })}
+            <Item/>
         </div>
         
         </>
