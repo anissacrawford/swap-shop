@@ -20,7 +20,9 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import ShopPage from '../ShopPage/ShopPage'
+import ShopPage from '../ShopPage/ShopPage';
+import SwapPage from '../SwapPage/SwapPage';
+import MySwapsPage from '../MySwapsPage/MySwapsPage';
 
 import './App.css';
 
@@ -106,10 +108,10 @@ function App() {
 
         {/* app routes */}
 
+        
         <Route exact path="/profile">
           <ProfilePage/>
         </Route>
-
 
         <Route exact path="/shop">
           <ShopPage/>
@@ -119,9 +121,9 @@ function App() {
           <SwapPage/>
         </Route>
 
-
-
-
+        <Route exact path="/myswaps">
+          <MySwapsPage/>
+        </Route>
 
         <Footer />
       </div>

@@ -1,19 +1,43 @@
-import Nav from "../Nav/Nav";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect} from 'react';
 
 
 function ProfilePage (){
+
+    const dispatch = useDispatch();
+    const item = useSelector(store => store.item);
+
+    useEffect(() => {
+        // dispatch to get all items to display on the DOM
+        dispatch({ type: 'GET_ITEM' });
+    }, []);
 
     return (
         <>
         <h1>Profile Page </h1>
         <h2>Username </h2>
-        <h2>My items </h2>
-        <h3>Item</h3>
-        <h4>Item name</h4>
-        <h4>Item description</h4>
-        <button>edit</button>
-        <button>delete</button>
+        
         <button>add item</button>
+
+        <div>
+        <h2>My items</h2>
+        {item.map((anItem) => {
+            console.log(anItem);
+            return(
+                <ul key={anItem.id}>
+                    <li>{anItem.username}</li>
+                    <li>{anItem.item_image}</li>
+                    <li>{anItem.item_name}</li>
+                    <li>{anItem.item_description}</li>
+                    <button>edit</button>
+                    <button>delete</button>
+                </ul>
+               
+            )
+        })}
+        </div>
+        
         </>
     )
 }
