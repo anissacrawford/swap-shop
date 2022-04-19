@@ -10,22 +10,23 @@ function AddItemPage(){
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const addItem = (event) => {
-        event.preventDefault();
+    const addItem = () => {
+        console.log(itemName);
 
         dispatch({
-            type: 'ADD_ITEM',
+            type: 'POST_ITEM',
             payload: {
                 itemName: itemName,
                 itemImage: itemImage,
                 itemDescription: itemDescription
             },
         });
+        history.push('/profile');
     }; //end addItem
 
     return(
         
-            <form onSubmit={addItem}>
+            <form>
 
                 <h2>Add Item:</h2>
 
@@ -72,7 +73,7 @@ function AddItemPage(){
                 </div>
 
                 <button onClick={() => {history.push('/profile');}}>Cancel</button>
-                <button onClick={() => {history.push('/profile');}}>Add Item</button>
+                <button onClick={addItem}>Add Item</button>
 
             </form>
         

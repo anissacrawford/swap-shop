@@ -24,6 +24,7 @@ import ShopPage from '../ShopPage/ShopPage';
 import SwapPage from '../SwapPage/SwapPage';
 import MySwapsPage from '../MySwapsPage/MySwapsPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
+import EditPage from '../EditPage/EditPage';
 
 import './App.css';
 
@@ -128,6 +129,10 @@ function App() {
 
         <Route exact path="/additem">
           <AddItemPage/>
+        </Route>
+
+        <Route exact path="/edit">
+          <EditPage/>
         </Route>
 
         <Footer />

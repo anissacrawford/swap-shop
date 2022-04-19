@@ -22,7 +22,7 @@ function ProfilePage (){
 
         <div>
         <h2>My items</h2>
-        {/* {item.map((anItem) => {
+        {item?.map((anItem) => {
             console.log(anItem);
             return(
                 <ul key={anItem.id}>
@@ -30,12 +30,12 @@ function ProfilePage (){
                     <li>{anItem.item_image}</li>
                     <li>{anItem.item_name}</li>
                     <li>{anItem.item_description}</li>
-                    <button>edit</button>
-                    <button>delete</button>
+                    <button onClick={() => {history.push('/edit');}}>edit</button>
+                    <button onClick={(event) => dispatch({ type:'DELETE_ITEM', payload: anItem.id})}>delete</button>
                 </ul>
                
             )
-        })} */}
+        })}
             <button onClick={() => {history.push('/additem');}}>add item</button>
         </div>
         

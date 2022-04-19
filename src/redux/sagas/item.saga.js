@@ -3,10 +3,9 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 //get all items from the DB 
 function* getNewItems (){
-    
     try {
+        // console.log('in get item saga', item.data);
         const item = yield axios.get('/api/item');
-        console.log('get all:', item.data);
         yield put({ type: 'SET_ITEM', payload: item.data });
 
     } catch (err){
@@ -14,8 +13,37 @@ function* getNewItems (){
     }   
 }
 
-function* getItems() {
-    yield takeLatest('GET_ITEM', getNewItems);
+//post new items to DB 
+function* postNewItems(action) {
+    try{
+        // console.log('in post item saga', action.payload);
+        yield axios.post('/api/item', action.payload);
+        yield put({type: 'GET_ITEM'})
+    } catch(err) {
+        console.log(err);   
+    }
 }
 
-export default getItems; 
+//update items in DB 
+
+
+//delete items from DB 
+function* deleteItems(action) {
+    try {
+          console.log(`in delete item saga, ${action.payload}`);
+          yield axios.delete(`/api/item/${action.payload}`)
+          yield put({ type: 'GET_ITEM'})
+      } catch(err) {
+          console.log(err);
+      }
+  }
+
+//combines CRUD functions 
+function* itemSaga() {
+    yield takeLatest('GET_ITEM', getNewItems);
+    yield takeLatest('POST_ITEM', postNewItems);
+    // yield takeLatest ('UPDATE_ITEM', updateItems);
+    yield takeLatest('DELETE_ITEM', deleteItems);
+}
+
+export default itemSaga; 

@@ -1,4 +1,9 @@
+import { useHistory } from 'react-router-dom';
+
 function SwapPage (){
+    
+    const history = useHistory();
+
     return (
         <>
         <h1>Swap Page</h1>
@@ -12,7 +17,7 @@ function SwapPage (){
         <h3>Item name</h3>
         <h3>Item description</h3>
 
-        <button>Cancel</button>
+        <button onClick={() => {history.push('/shop');}}>Cancel</button>
         <button>Confirm</button>
         </>
     )
