@@ -6,7 +6,8 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware')
 // GET
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
-  SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description FROM "user", "item"
+  SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
+  FROM "user", "item"
   WHERE "user".id = "item".user_id
   ORDER BY "item".id DESC;`;
 
@@ -15,15 +16,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     res.send(result.rows);
   })
   .catch(err => {
-    console.log('ERR in item router GET', err);
+    console.log('error in item router GET', err);
+    res.sendStatus(500);
   })
 });
 
 // POST
 router.post('/', (req, res) => {
-  // console.log("ITEM ROUTER", req.body.item_name);
   const queryText = `
-  INSERT INTO "item" ("item_name", "item_image", "item_description", "user_id") VALUES ($1, $2, $3, $4);`
+  INSERT INTO "item" ("item_name", "item_image", "item_description", "user_id") 
+  VALUES ($1, $2, $3, $4);`
 
   const queryValues = [req.body.itemName, req.body.itemImage, req.body.itemDescription, req.user.id]
 
@@ -36,11 +38,26 @@ router.post('/', (req, res) => {
   })
 });
 
-// UPDATE 
+// PUT
+router.put('/:id', (req, res) => {
+  const queryText = `
+  UPDATE "item" 
+  SET "item_name" = $1, "item_image" = $2, "item_description" = $3
+  WHERE "item".id = $4;`;
 
+  const queryValues = [req.body.github_name, req.params.id];
+  
+  pool.query(queryText, queryValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch(err => {
+          console.log('error in item router PUT', err);
+          res.sendStatus(500);
+      });
+});
 
-
-//DELETE
+// DELETE
 router.delete('/:id', (req, res) => {
   console.log("DELETE", req.user.id);
   const queryText = `
@@ -51,9 +68,11 @@ router.delete('/:id', (req, res) => {
   const queryValues = [req.user.id, req.params.id];
 
   pool.query(queryText, queryValues)
-    .then(() => { res.sendStatus(200);})
-    .catch((err) => {
-      console.log('Error in DELETE', err);
+    .then((result) => { 
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.log('error in item router DELETE', err);
       res.sendStatus(500);
     });
 });

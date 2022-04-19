@@ -25,7 +25,15 @@ function* postNewItems(action) {
 }
 
 //update items in DB 
-
+function* editItems(action) {
+    try {
+        console.log(`in edit item saga, ${action.payload}`);
+        yield axios.put(`/api/item/${action.payload}`)
+        yield put({ type: 'GET_ITEM'})
+    } catch(err) {
+        console.log(err);
+    }
+}
 
 //delete items from DB 
 function* deleteItems(action) {
@@ -42,7 +50,7 @@ function* deleteItems(action) {
 function* itemSaga() {
     yield takeLatest('GET_ITEM', getNewItems);
     yield takeLatest('POST_ITEM', postNewItems);
-    // yield takeLatest ('UPDATE_ITEM', updateItems);
+    yield takeLatest ('EDIT_ITEM', editItems);
     yield takeLatest('DELETE_ITEM', deleteItems);
 }
 
