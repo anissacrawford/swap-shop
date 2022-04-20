@@ -29,7 +29,7 @@ function ShopPage (){
         
     <ThemeProvider theme={theme}>
         <div>
-        <h2>The Shop</h2>
+        <h1 className="center">The Shop</h1>
         {item?.map((anItem) => {
             return(
                <ShopItem key={anItem.id} anItem={anItem}/>

@@ -24,14 +24,14 @@ function SwapPage (){
     return (
         <ThemeProvider theme={theme}>
         <>
-        <h1>Swap Page</h1>
+        <h1 className="center">Swap Page</h1>
 
-        <h2>For Your...</h2>
+        <h2 className="center">For Your...</h2>
         <h3>Item image</h3>
         <h3>Item name</h3>
         <h3>Item description</h3>
 
-        <h2>I will trade...</h2>
+        <h2 className="center">I will trade...</h2>
         {item.map((anItem) => {
             return(
                 <ul key={anItem.id} anItem={anItem}>

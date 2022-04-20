@@ -51,7 +51,7 @@ function EditPage (){
 
     return(
         <ThemeProvider theme={theme}>
-        <h1>Edit Page</h1>
+        <h2 className="center">Edit Item</h2>
 
         <form>
             {/* item name */}

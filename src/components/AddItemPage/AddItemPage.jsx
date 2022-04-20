@@ -41,7 +41,7 @@ function AddItemPage(){
     return(
             <ThemeProvider theme={theme}>
             <form>
-                <h2>Add Item:</h2>
+                <h2 className="center">Add Item</h2>
 
                 {/* item name */}
                 <div>

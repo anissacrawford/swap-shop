@@ -114,3 +114,7 @@ input {
 li {
   list-style: none;
 }
+
+.center {
+  text-align: center;
+}
