@@ -15,6 +15,14 @@ function EditPage (){
     const editItem = useSelector((store) => store.editItem);
     const dispatch = useDispatch;
 
+    const theme = createTheme({
+        palette: {
+          primary: {
+            main: '#36802d'
+          }
+        }
+      })
+
     function handleChange(){
         dispatch({
             type: 'EDIT_ONCHANGE', 
@@ -33,6 +41,7 @@ function EditPage (){
 
     return(
         <>
+        <ThemeProvider theme={theme}>
         <h1>Edit Page</h1>
 
         <form>
@@ -40,7 +49,8 @@ function EditPage (){
             <div>
                 <label htmlFor="itemName">
                 Item:
-                <input
+                <TextField
+                    variant="outlined"
                     type="text"
                     name="itemName"
                     value={editItem.itemName}
@@ -53,7 +63,8 @@ function EditPage (){
             <div>
                 <label htmlFor="itemImage">
                 Image:
-                <input
+                <TextField
+                    variant="outlined"
                     type="text"
                     name="itemImage"
                     value={editItem.itemImage}
@@ -66,7 +77,8 @@ function EditPage (){
             <div>
                 <label htmlFor="itemDescription">
                 Description:
-                <input
+                <TextField
+                    variant="outlined"
                     type="text"
                     name="itemDescription"
                     value={editItem.itemDescription}
@@ -76,8 +88,10 @@ function EditPage (){
             </div>
         </form>
 
-        <button onClick={() => {history.push('/profile');}}>Cancel</button>
-        <button onClick={handleSubmit}>Save</button>
+        <Button variant="contained" color="primary" onClick={() => {history.push('/profile');}}>Cancel</Button>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>Save</Button>
+
+        </ThemeProvider>
         </>
     )
 }
