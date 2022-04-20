@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-import Item from '../Item/Item';
+import ProfileItem from '../ProfileItem/ProfileItem';
 
 //MUI Styling 
 import Button from '@material-ui/core/Button';
@@ -30,16 +30,14 @@ function ProfilePage (){
 
     return (
         <ThemeProvider theme={theme}>
-        <h2>My items</h2>
-
-        <div>
-            {item?.map((anItem) => {
-                return(
-                    <Item key={anItem.id} anItem={anItem} />
-                )})}
-                
+            <h2>My items</h2>
             <Button variant="contained" color="primary" onClick={() => {history.push('/additem');}}>add item</Button>
-        </div>
+                <div>
+                    {item?.map((anItem) => {
+                        return(
+                            <ProfileItem key={anItem.id} anItem={anItem} />
+                        )})}
+                </div>
         </ThemeProvider>
     )
 }

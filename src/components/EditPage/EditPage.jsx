@@ -1,5 +1,6 @@
 //imports
-import { useHistory } from 'react-router-dom';
+import {useEffect} from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -14,6 +15,7 @@ function EditPage (){
     const history = useHistory();
     const editItem = useSelector((store) => store.editItem);
     const dispatch = useDispatch;
+    const {id} = useParams();
 
     const theme = createTheme({
         palette: {
@@ -23,10 +25,14 @@ function EditPage (){
         }
       })
 
+    // useEffect(() => {
+    //     dispatch({type: 'GET_EDIT_ITEM', payload: id})
+    // }, [id] )
+
     function handleChange(){
         dispatch({
             type: 'EDIT_ONCHANGE', 
-            payload: {property: property}
+            payload: { property: property, value: event.target.value }
         })
     }
 
@@ -36,11 +42,14 @@ function EditPage (){
         axios.put(`/api/item/${editItem.id}`, editItem)
             .then(response => {
                 dispatch({type})
+                history.push('/profile/${id}'); // back to list
+            })
+            .catch(error => {
+                console.log('error in edit PUT: ', error);
             })
     }
 
     return(
-        <>
         <ThemeProvider theme={theme}>
         <h1>Edit Page</h1>
 
@@ -52,8 +61,8 @@ function EditPage (){
                 <TextField
                     type="text"
                     name="itemName"
-                    value={editItem.itemName}
-                    onChange={(event) => handleChange(event.target.value)}
+                    value={editItem.item_name}
+                    onChange={(event) => handleChange('item_name')}
                 />
                 </label>
             </div>
@@ -65,8 +74,8 @@ function EditPage (){
                 <TextField
                     type="text"
                     name="itemImage"
-                    value={editItem.itemImage}
-                    onChange={(event) => handleChange(event.target.value)}
+                    value={editItem.item_image}
+                    onChange={(event) => handleChange('item_image')}
                 />
                 </label>
             </div>
@@ -78,8 +87,8 @@ function EditPage (){
                 <TextField
                     type="text"
                     name="itemDescription"
-                    value={editItem.itemDescription}
-                    onChange={(event) => handleChange(event.target.value)}
+                    value={editItem.item_description}
+                    onChange={(event) => handleChange('item_description')}
                 />
                 </label>
             </div>
@@ -89,7 +98,6 @@ function EditPage (){
         <Button variant="contained" color="primary" onClick={handleSubmit}>Save</Button>
 
         </ThemeProvider>
-        </>
     )
 }
 

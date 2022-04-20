@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-import Item from '../Item/Item';
+import ShopItem from '../ShopItem/ShopItem';
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
@@ -35,10 +35,9 @@ function ShopPage (){
         <h2>The Shop</h2>
         {item?.map((anItem) => {
             return(
-               <Item key={anItem.id} anItem={anItem}/>
+               <ShopItem key={anItem.id} anItem={anItem}/>
             )
         })}
-            <Button variant="contained" color="primary"  onClick={() => {history.push('/swap');}}>swap?</Button>
         </div>
     </ThemeProvider>
     )

@@ -46,7 +46,7 @@ router.put('/:id', (req, res) => {
   SET "item_name" = $1, "item_image" = $2, "item_description" = $3
   WHERE "item".id = $4;`;
 
-  const queryValues = [req.body.github_name, req.params.id];
+  const queryValues = [req.body.item_name, req.body.item_image, req.body.item_description, req.params.id];
   
   pool.query(queryText, queryValues)
       .then((result) => {

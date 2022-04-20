@@ -8,7 +8,7 @@ import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 import {Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
-function Item({anItem}) {
+function ProfileItem({anItem}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -44,4 +44,4 @@ function Item({anItem}) {
     )
 }
 
-export default Item;
+export default ProfileItem;
