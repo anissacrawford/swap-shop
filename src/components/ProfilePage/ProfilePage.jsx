@@ -13,6 +13,7 @@ function ProfilePage (){
 
     const dispatch = useDispatch();
     const item = useSelector(store => store.item);
+    const user = useSelector(store => store.user);
     const history = useHistory();
 
     const theme = createTheme({
@@ -30,13 +31,16 @@ function ProfilePage (){
 
     return (
         <ThemeProvider theme={theme}>
+            <h1>Welcome, {user.username}</h1>
             <h2>My items</h2>
             <Button variant="contained" color="primary" onClick={() => {history.push('/additem');}}>add item</Button>
                 <div>
+                    
                     {item?.map((anItem) => {
                         return(
                             <ProfileItem key={anItem.id} anItem={anItem} />
                         )})}
+                        
                 </div>
         </ThemeProvider>
     )

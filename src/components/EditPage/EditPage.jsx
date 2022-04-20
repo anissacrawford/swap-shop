@@ -62,7 +62,7 @@ function EditPage (){
                     type="text"
                     name="itemName"
                     value={editItem.item_name}
-                    onChange={(event) => handleChange('item_name')}
+                    onChange={(event) => handleChange(event, 'item_name')}
                 />
                 </label>
             </div>
@@ -75,7 +75,7 @@ function EditPage (){
                     type="text"
                     name="itemImage"
                     value={editItem.item_image}
-                    onChange={(event) => handleChange('item_image')}
+                    onChange={(event) => handleChange(event, 'item_image')}
                 />
                 </label>
             </div>
@@ -88,7 +88,7 @@ function EditPage (){
                     type="text"
                     name="itemDescription"
                     value={editItem.item_description}
-                    onChange={(event) => handleChange('item_description')}
+                    onChange={(event) => handleChange(event, 'item_description')}
                 />
                 </label>
             </div>

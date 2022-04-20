@@ -2,18 +2,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
 import ShopItem from '../ShopItem/ShopItem';
 
 //MUI Styling
-import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 
 function ShopPage (){
 
     const dispatch = useDispatch();
     const item = useSelector(store => store.item);
-    const history = useHistory();
 
     const theme = createTheme({
         palette: {

@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware')
 
-// GET
+// GET ITEM
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
   SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
@@ -22,7 +22,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   })
 });
 
-// POST
+// POST ITEM
 router.post('/', (req, res) => {
   const queryText = `
   INSERT INTO "item" ("item_name", "item_image", "item_description", "user_id") 
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
   })
 });
 
-// PUT
+// PUT ITEM
 router.put('/:id', (req, res) => {
   const queryText = `
   UPDATE "item" 
@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
       });
 });
 
-// DELETE
+// DELETE ITEM
 router.delete('/:id', (req, res) => {
   console.log("DELETE", req.user.id);
   const queryText = `
