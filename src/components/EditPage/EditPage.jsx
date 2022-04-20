@@ -50,7 +50,6 @@ function EditPage (){
                 <label htmlFor="itemName">
                 Item:
                 <TextField
-                    variant="outlined"
                     type="text"
                     name="itemName"
                     value={editItem.itemName}
@@ -64,7 +63,6 @@ function EditPage (){
                 <label htmlFor="itemImage">
                 Image:
                 <TextField
-                    variant="outlined"
                     type="text"
                     name="itemImage"
                     value={editItem.itemImage}
@@ -78,7 +76,6 @@ function EditPage (){
                 <label htmlFor="itemDescription">
                 Description:
                 <TextField
-                    variant="outlined"
                     type="text"
                     name="itemDescription"
                     value={editItem.itemDescription}

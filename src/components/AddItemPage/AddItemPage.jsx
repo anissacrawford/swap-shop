@@ -39,9 +39,8 @@ function AddItemPage(){
     }; //end addItem
 
     return(
-        
-            <form>
             <ThemeProvider theme={theme}>
+            <form>
                 <h2>Add Item:</h2>
 
                 {/* item name */}
@@ -49,7 +48,6 @@ function AddItemPage(){
                     <label htmlFor="itemName">
                     Item:
                     <TextField
-                        variant="outlined"
                         type="text"
                         name="itemName"
                         value={itemName}
@@ -64,7 +62,6 @@ function AddItemPage(){
                     <label htmlFor="itemImage">
                     Image:
                     <TextField
-                        variant="outlined"
                         type="text"
                         name="itemImage"
                         value={itemImage}
@@ -79,7 +76,6 @@ function AddItemPage(){
                     <label htmlFor="itemDescription">
                     Description:
                     <TextField
-                        variant="outlined"
                         type="text"
                         name="itemDescription"
                         value={itemDescription}
@@ -92,9 +88,9 @@ function AddItemPage(){
                 <Button variant="contained" color="primary" onClick={() => {history.push('/profile');}}>Cancel</Button>
                 <Button variant="contained" color="primary" onClick={addItem}>Add Item</Button>
 
-            </ThemeProvider>
+            
             </form>
-        
+            </ThemeProvider>
     )
 }
 

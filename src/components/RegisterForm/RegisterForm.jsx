@@ -1,5 +1,12 @@
+//imports 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+//MUI Styling 
+import Button from '@material-ui/core/Button';
+import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 
 function RegisterForm() {
     const [username, setUsername] = useState('');
@@ -40,7 +47,7 @@ function RegisterForm() {
       <div>
         <label htmlFor="username">
           Username:
-          <input
+          <TextField
             type="text"
             name="username"
             value={username}
@@ -54,7 +61,7 @@ function RegisterForm() {
       <div>
         <label htmlFor="password">
           Password:
-          <input
+          <TextField
             type="password"
             name="password"
             value={password}
@@ -68,7 +75,7 @@ function RegisterForm() {
       <div>
         <label htmlFor="firstName">
           First Name:
-          <input
+          <TextField
             type="text"
             name="firstName"
             value={firstName}
@@ -82,7 +89,7 @@ function RegisterForm() {
       <div>
         <label htmlFor="lastName">
           Last Name:
-          <input
+          <TextField
             type="text"
             name="lastName"
             value={lastName}
@@ -96,7 +103,7 @@ function RegisterForm() {
       <div>
         <label htmlFor="emailAddress">
           Email:
-          <input
+          <TextField
             type="text"
             name="emailAddress"
             value={emailAddress}
@@ -107,7 +114,8 @@ function RegisterForm() {
       </div>
 
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
+        <Button variant="contained" color="primary" type="submit" name="submit" value="Register">Register </Button>
       </div>
       
     </form>
