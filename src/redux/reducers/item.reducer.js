@@ -7,5 +7,6 @@ const item = (state = [], action) => {
     }
 }
 
-export default item
+export default item;
+
 

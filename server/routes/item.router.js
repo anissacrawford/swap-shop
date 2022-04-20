@@ -10,9 +10,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   FROM "user", "item"
   WHERE "user".id = "item".user_id
   ORDER BY "item".id DESC;`;
-
+  
   pool.query(queryText)
   .then(result => {
+    console.log("HELLO" , result.rows);
     res.send(result.rows);
   })
   .catch(err => {

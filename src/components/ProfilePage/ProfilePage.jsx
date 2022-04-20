@@ -26,8 +26,10 @@ function ProfilePage (){
         <div>
             {item?.map((anItem) => {
                 return(
-                    <Item key={anItem.id} anItem={anItem}/>
+                    <Item key={anItem.id} anItem={anItem} />
+                    
                 )})}
+                
             <button onClick={() => {history.push('/additem');}}>add item</button>
         </div>
         

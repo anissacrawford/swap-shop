@@ -6,8 +6,7 @@ function* getNewItems (){
     try {
         // console.log('in get item saga', item.data);
         const item = yield axios.get('/api/item');
-        yield put({ type: 'SET_ITEM', payload: item.data });
-
+        yield put({ type: 'SET_ITEM', payload: item.data});
     } catch (err){
         console.log('get all error', err);
     }   
