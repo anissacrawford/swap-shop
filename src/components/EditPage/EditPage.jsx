@@ -1,6 +1,13 @@
+//imports
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+
+//MUI styling 
+import Button from '@material-ui/core/Button';
+import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 
 function EditPage (){
 

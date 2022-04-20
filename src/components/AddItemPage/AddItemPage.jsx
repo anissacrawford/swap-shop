@@ -1,6 +1,12 @@
+// imports 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+// MUI styling
+import Button from '@material-ui/core/Button';
+import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 function AddItemPage(){
 
@@ -9,6 +15,14 @@ function AddItemPage(){
     const [itemDescription, setItemDescription] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const theme = createTheme({
+        palette: {
+          primary: {
+            main: '#36802d'
+          }
+        }
+      })
 
     const addItem = () => {
         console.log(itemName);
@@ -27,14 +41,15 @@ function AddItemPage(){
     return(
         
             <form>
-
+            <ThemeProvider theme={theme}>
                 <h2>Add Item:</h2>
 
                 {/* item name */}
                 <div>
                     <label htmlFor="itemName">
                     Item:
-                    <input
+                    <TextField
+                        variant="outlined"
                         type="text"
                         name="itemName"
                         value={itemName}
@@ -48,7 +63,8 @@ function AddItemPage(){
                 <div>
                     <label htmlFor="itemImage">
                     Image:
-                    <input
+                    <TextField
+                        variant="outlined"
                         type="text"
                         name="itemImage"
                         value={itemImage}
@@ -62,7 +78,8 @@ function AddItemPage(){
                 <div>
                     <label htmlFor="itemDescription">
                     Description:
-                    <input
+                    <TextField
+                        variant="outlined"
                         type="text"
                         name="itemDescription"
                         value={itemDescription}
@@ -72,9 +89,10 @@ function AddItemPage(){
                     </label>
                 </div>
 
-                <button onClick={() => {history.push('/profile');}}>Cancel</button>
-                <button onClick={addItem}>Add Item</button>
+                <Button variant="contained" color="primary" onClick={() => {history.push('/profile');}}>Cancel</Button>
+                <Button variant="contained" color="primary" onClick={addItem}>Add Item</Button>
 
+            </ThemeProvider>
             </form>
         
     )
