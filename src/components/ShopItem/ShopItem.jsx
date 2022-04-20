@@ -24,7 +24,7 @@ function ShopItem ({anItem}){
     const swap = () => {
         // coming back undefined 
         console.log('HI', item.id);
-        history.push(`/swap/${item.id}`);
+        history.push(`/swap/`);
     }
 
     return (

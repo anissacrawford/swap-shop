@@ -1,13 +1,16 @@
 //imports
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 
+
 function SwapPage (){
     
     const history = useHistory();
+    const item = useSelector(store => store.item);
 
     const theme = createTheme({
         palette: {
@@ -29,10 +32,16 @@ function SwapPage (){
         <h3>Item description</h3>
 
         <h2>I will trade...</h2>
-        <h3>dropdown</h3>
-        <h3>Item image</h3>
-        <h3>Item name</h3>
-        <h3>Item description</h3>
+        {item.map((anItem) => {
+            return(
+                <ul key={anItem.id} anItem={anItem}>
+                    <li>Image: {anItem.item_image}</li>
+                    <li>Name: {anItem.item_name}</li>
+                    <li>Description: {anItem.item_description}</li>
+                    <Button variant="contained" color="primary">Select</Button>
+                </ul>
+            )
+        })}
 
         <Button variant="contained" color="primary" onClick={() => {history.push('/shop');}}>Cancel</Button>
         <Button variant="contained" color="primary">Confirm</Button>

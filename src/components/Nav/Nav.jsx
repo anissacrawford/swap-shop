@@ -39,10 +39,6 @@ function Nav() {
               My Swaps
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
             <LogOutButton className="navLink" />
           </>
         )}
