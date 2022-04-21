@@ -49,7 +49,7 @@ function ProfileItem({anItem}) {
                     <Paper elevation={3}>
                         <ul>
                             <li>Image: {anItem.item_image}</li>
-                            <li>Name: {anItem.item_name}</li>
+                            <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
                             <Button variant="contained" color="primary" onClick={handleClick}>edit</Button>
                             <Button variant="contained" color="primary" onClick={(event) => dispatch({ type:'DELETE_ITEM', payload: anItem.id})}>delete</Button>

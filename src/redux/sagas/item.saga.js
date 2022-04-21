@@ -36,9 +36,10 @@ function* postNewItems(action) {
 }
 
 //update items in DB 
+//hold edit 
 function* editItems(action) {
     try {
-        console.log(`in edit item saga, ${action.payload}`);
+        // console.log(`in edit item saga, ${action.payload}`);
         const getItem = yield axios.get(`/api/item/${action.payload}`)
         yield put({ type: 'SET_EDIT_ITEM', payload: getItem.data[0]})
     } catch(err) {
@@ -46,9 +47,11 @@ function* editItems(action) {
     }
 }
 
+//update items in DB 
+//send edit
 function* updateItems (action) {
     try{
-        console.log('BEEP', action.payload);
+        // console.log(`in edit item saga, action.payload`);
         yield axios.put(`/api/item/${action.payload.id}`, action.payload);
         yield put({type: 'GET_EDIT_ITEM', payload: action.payload.item_id})
     } catch(err){
@@ -58,13 +61,13 @@ function* updateItems (action) {
 
 //delete items from DB 
 function* deleteItems(action) {
-    try {
-          console.log(`in delete item saga, ${action.payload}`);
-          yield axios.delete(`/api/item/${action.payload}`)
-          yield put({ type: 'GET_ITEM'})
-      } catch(err) {
-          console.log(err);
-      }
+    try{
+        console.log(`in delete item saga, ${action.payload}`);
+        yield axios.delete(`/api/item/${action.payload}`)
+        yield put({ type: 'GET_ITEM'})
+    } catch(err) {
+        console.log(err);
+    }
   }
 
 //combines CRUD functions 

@@ -22,7 +22,7 @@ function ShopPage (){
 
     useEffect(() => {
         // dispatch to get all items to display on the DOM
-        dispatch({ type: 'GET_SHOP_ITEM' });
+        dispatch({ type: 'GET_SHOP_ITEM'});
     }, []);
 
     return (

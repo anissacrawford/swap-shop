@@ -47,6 +47,19 @@ function EditPage (){
         <h2 className="center">Edit Item</h2>
 
         <form>
+             {/* item image */}
+             <div>
+                <label htmlFor="itemImage">
+                Image:
+                <TextField
+                    type="text"
+                    name="itemImage"
+                    value={editItem.item_image}
+                    onChange={(event) => handleChange(event, 'item_image')}
+                />
+                </label>
+            </div>
+            
             {/* item name */}
             <div>
                 <label htmlFor="itemName">
@@ -56,19 +69,6 @@ function EditPage (){
                     name="itemName"
                     value={editItem.item_name}
                     onChange={(event) => handleChange(event, 'item_name')}
-                />
-                </label>
-            </div>
-
-            {/* item image */}
-            <div>
-                <label htmlFor="itemImage">
-                Image:
-                <TextField
-                    type="text"
-                    name="itemImage"
-                    value={editItem.item_image}
-                    onChange={(event) => handleChange(event, 'item_image')}
                 />
                 </label>
             </div>

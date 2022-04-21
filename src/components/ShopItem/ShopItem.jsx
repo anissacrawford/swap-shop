@@ -37,8 +37,9 @@ function ShopItem ({anItem}){
       })
 
     const swap = () => {
-        dispatch({type: 'GET_PROFILE_ITEM'})
-        history.push(`/swap/${anItem.id}`);
+        dispatch({type: 'GET_PROFILE_ITEM'});
+        dispatch({type: `SET_OFFER_ITEM_A`, payload: anItem})
+        history.push(`/swap`);
     }
 
     return (
@@ -49,9 +50,9 @@ function ShopItem ({anItem}){
                         <ul>
                             <li>User: {anItem.username}</li>
                             <li>Image: {anItem.item_image}</li>
-                            <li>Name: {anItem.item_name}</li>
+                            <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
-                            <Button variant="contained" color="primary"  onClick={swap}>swap</Button>
+                            <Button variant="contained" color="primary" onClick={swap}>swap</Button>
                         </ul>
                     </Paper>
                 </div>
