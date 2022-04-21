@@ -26,7 +26,7 @@ function ProfilePage (){
 
     useEffect(() => {
         // dispatch to get all items to display on the DOM
-        dispatch({ type: 'GET_ITEM' });
+        dispatch({ type: 'GET_PROFILE_ITEM' });
     }, []);
 
     return (

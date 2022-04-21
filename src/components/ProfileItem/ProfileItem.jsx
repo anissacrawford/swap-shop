@@ -48,7 +48,6 @@ function ProfileItem({anItem}) {
                 <div className={classes.root}>
                     <Paper elevation={3}>
                         <ul>
-                            <li>User: {anItem.username}</li>
                             <li>Image: {anItem.item_image}</li>
                             <li>Name: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>

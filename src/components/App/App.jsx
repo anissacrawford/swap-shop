@@ -112,7 +112,7 @@ function App() {
           <ShopPage/>
         </Route>
 
-        <Route exact path="/swap">
+        <Route exact path="/swap/:id">
           <SwapPage/>
         </Route>
 

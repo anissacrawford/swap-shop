@@ -2,7 +2,6 @@
 import {useEffect} from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 
 //MUI styling 
 import Button from '@material-ui/core/Button';
@@ -14,8 +13,8 @@ function EditPage (){
 
     const history = useHistory();
     const editItem = useSelector((store) => store.editItem);
-    const dispatch = useDispatch;
-    const {id} = useParams();
+    const dispatch = useDispatch();
+    const id = useParams().id;
 
     const theme = createTheme({
         palette: {
@@ -25,11 +24,11 @@ function EditPage (){
         }
       })
 
-    // useEffect(() => {
-    //     dispatch({type: 'GET_EDIT_ITEM', payload: id})
-    // }, [id] )
+    useEffect(() => {
+        dispatch({type: 'GET_EDIT_ITEM', payload: id})
+    }, [id] )
 
-    function handleChange(){
+    function handleChange(event, property){
         dispatch({
             type: 'EDIT_ONCHANGE', 
             payload: { property: property, value: event.target.value }
@@ -38,15 +37,9 @@ function EditPage (){
 
     function handleSubmit(event){
         event.preventDefault();
-
-        axios.put(`/api/item/${editItem.id}`, editItem)
-            .then(response => {
-                dispatch({type})
-                history.push('/profile/${id}'); // back to list
-            })
-            .catch(error => {
-                console.log('error in edit PUT: ', error);
-            })
+        dispatch({type: 'UPDATE_ITEM', payload: editItem});
+        dispatch({type: 'CLEAR_EDIT'});
+        history.push('/profile');
     }
 
     return(

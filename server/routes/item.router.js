@@ -1,16 +1,35 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const {rejectUnauthenticated} = require('../modules/authentication-middleware')
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-// GET ITEM
-router.get('/', rejectUnauthenticated, (req, res) => {
+// GET PROFILE ITEM
+router.get('/getProfile', rejectUnauthenticated, (req, res) => {
   const queryText = `
   SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
-  FROM "user", "item"
-  WHERE "user".id = "item".user_id
+  FROM "user"
+  JOIN "item" ON  "user".id = "item".user_id
+  WHERE $1 = "item".user_id
   ORDER BY "item".id DESC;`;
   
+  pool.query(queryText, [req.user.id])
+  .then(result => {
+    console.log("HELLO" , result.rows);
+    res.send(result.rows);
+  })
+  .catch(err => {
+    console.log('error in item router GET', err);
+    res.sendStatus(500);
+  })
+});
+
+// GET SHOP ITEM 
+router.get('/getShop', (req, res) => {
+  const queryText = `
+  SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description FROM "user", "item"
+  WHERE "user".id = "item".user_id
+  ORDER BY "item".id DESC;`;
+    
   pool.query(queryText)
   .then(result => {
     console.log("HELLO" , result.rows);
@@ -23,7 +42,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 // POST ITEM
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
   INSERT INTO "item" ("item_name", "item_image", "item_description", "user_id") 
   VALUES ($1, $2, $3, $4);`
@@ -40,7 +59,7 @@ router.post('/', (req, res) => {
 });
 
 // PUT ITEM
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
   UPDATE "item" 
   SET "item_name" = $1, "item_image" = $2, "item_description" = $3
@@ -59,7 +78,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE ITEM
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   console.log("DELETE", req.user.id);
   const queryText = `
   DELETE FROM "item"  

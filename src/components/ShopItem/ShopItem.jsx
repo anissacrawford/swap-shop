@@ -1,6 +1,6 @@
 //imports 
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
@@ -26,6 +26,7 @@ function ShopItem ({anItem}){
     const history = useHistory();
     const item = useSelector(store => store.item);
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     const theme = createTheme({
         palette: {
@@ -36,9 +37,8 @@ function ShopItem ({anItem}){
       })
 
     const swap = () => {
-        // coming back undefined 
-        console.log('HI', item.id);
-        history.push(`/swap/`);
+        dispatch({type: 'GET_PROFILE_ITEM'})
+        history.push(`/swap/${anItem.id}`);
     }
 
     return (
@@ -51,7 +51,7 @@ function ShopItem ({anItem}){
                             <li>Image: {anItem.item_image}</li>
                             <li>Name: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
-                            <Button variant="contained" color="primary"  onClick={swap}>swap?</Button>
+                            <Button variant="contained" color="primary"  onClick={swap}>swap</Button>
                         </ul>
                     </Paper>
                 </div>

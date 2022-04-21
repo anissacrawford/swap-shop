@@ -9,6 +9,7 @@ import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 
 function SwapPage (){
     
+  
     const history = useHistory();
     const item = useSelector(store => store.item);
 
@@ -27,10 +28,8 @@ function SwapPage (){
         <h1 className="center">Swap Page</h1>
 
         <h2 className="center">For Your...</h2>
-        <h3>Item image</h3>
-        <h3>Item name</h3>
-        <h3>Item description</h3>
-
+        <h3>Item A</h3>
+  
         <h2 className="center">I will trade...</h2>
         {item.map((anItem) => {
             return(
