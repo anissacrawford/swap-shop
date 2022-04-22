@@ -11,6 +11,14 @@ function MySwapsPage (){
           }
         }
       })
+
+    const decline = () => {
+      //delete from offer table 
+    }
+
+    const accept = () => {
+      //swap items on offer table 
+    }
       
     return (
         <>
@@ -20,8 +28,8 @@ function MySwapsPage (){
         <h3>Item image</h3>
         <h3>Item name</h3>
         <h3>Item description</h3>
-        <Button variant="contained" color="primary">decline</Button>
-        <Button variant="contained" color="primary">accept</Button>
+        <Button variant="contained" color="primary" onClick={decline}>decline</Button>
+        <Button variant="contained" color="primary" onClick={accept}>accept</Button>
         </ThemeProvider>
         </>
     )

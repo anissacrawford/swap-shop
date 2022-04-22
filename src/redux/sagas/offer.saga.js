@@ -7,7 +7,8 @@ function* holdOffer(action) {
     try {
         console.log(`in edit item saga, ${action.payload}`);
         const getOffer = yield axios.get(`/api/offer/${action.payload}`)
-        yield put({ type: 'SET_OFFER_ITEM', payload: getOffer.data[0]})
+        yield put({ type: 'SET_OFFER_ITEM_A', payload: getOffer.data[0]})
+        yield put({ type: 'SET_OFFER_ITEM_B', payload: getOffer.data[0]})
     } catch(err) {
         console.log(err);
     }
@@ -29,7 +30,7 @@ function* updateOffer(action) {
 // combines functions 
 function* offerSaga() {
     yield takeLatest('GET_PROFILE_ITEM', holdOffer);
-    yield takeLatest('GET_SHOP_ITEM', updateOffer);
+    yield takeLatest('UPDATE_SHOP_ITEM', updateOffer);
 }
 
 export default offerSaga; 
