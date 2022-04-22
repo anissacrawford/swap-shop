@@ -21,11 +21,11 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   
 
 //POST OFFER (posts offer to offer table)
-router.post('/', rejectUnauthenticated, (req, res) => {
+router.post('/', (req, res) => {
     const queryText = `
     INSERT INTO "offer" ("user_A_id", "item_A_id", "user_B_id", "item_B_id")
     VALUES ($1, $2, $3, $4);`
-  
+
     const queryValues = [req.body.userA, req.body.itemA, req.body.userB, req.body.itemB]
 
     pool.query(queryText, queryValues)
@@ -36,7 +36,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500)
     })
   });
-
 
 //ACCEPT OFFER (PUT, UPDATE offer where user id is updated on item)
 

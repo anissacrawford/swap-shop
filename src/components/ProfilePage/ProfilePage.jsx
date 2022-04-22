@@ -33,7 +33,7 @@ function ProfilePage (){
         <ThemeProvider theme={theme}>
             <h1 className="center">{user.username}'s Profile</h1>
             <h2 className="center">My items</h2>
-            <Button  variant="contained" color="primary" onClick={() => {history.push('/additem');}}>add item</Button>
+            <Button variant="contained" color="primary" onClick={() => {history.push('/additem');}}>add item</Button>
                 <div>
                     
                     {item?.map((anItem) => {

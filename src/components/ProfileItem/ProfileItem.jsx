@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         '& > *': {
         margin: theme.spacing(1),
-        width: theme.spacing(30),
-        height: theme.spacing(20),
+        width: theme.spacing(40),
+        height: theme.spacing(40),
         },
     },
     }));
@@ -47,8 +47,8 @@ function ProfileItem({anItem}) {
             <Grid item xs={12} s={6} md={3} lg={4}>
                 <div className={classes.root}>
                     <Paper elevation={3}>
-                        <ul>
-                            <li>Image: {anItem.item_image}</li>
+                        <ul className="center">
+                            <li><img src={anItem.item_image}/></li>
                             <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
                             <Button variant="contained" color="primary" onClick={handleClick}>edit</Button>

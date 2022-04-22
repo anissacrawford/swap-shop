@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         '& > *': {
         margin: theme.spacing(1),
-        width: theme.spacing(30),
-        height: theme.spacing(20),
+        width: theme.spacing(40),
+        height: theme.spacing(40),
         },
     },
     }));
@@ -36,8 +36,8 @@ function ShopItem ({anItem}){
       })
 
     const swap = () => {
-        dispatch({type: 'GET_PROFILE_ITEM'});
-        dispatch({type: `SET_OFFER_ITEM_A`, payload: anItem})
+        dispatch({type: 'GET_PROFILE_ITEM', payload: anItem.id});
+        dispatch({type: 'SET_OFFER_ITEM_A', payload: anItem})
         history.push(`/swap`);
     }
 
@@ -46,9 +46,9 @@ function ShopItem ({anItem}){
             <Grid item xs={12} s={6} md={3} lg={4}>
                 <div className={classes.root}>
                     <Paper elevation={3}>
-                        <ul>
-                            <li>User: {anItem.username}</li>
-                            <li>Image: {anItem.item_image}</li>
+                        <ul className="center">
+                            {/* <li className="center">User: {anItem.username}</li> */}
+                            <li><img src={anItem.item_image}/></li>
                             <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
                             <Button variant="contained" color="primary" onClick={swap}>swap</Button>

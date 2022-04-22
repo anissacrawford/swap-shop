@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
       '& > *': {
       margin: theme.spacing(1),
-      width: theme.spacing(30),
-      height: theme.spacing(15)
+      width: theme.spacing(40),
+      height: theme.spacing(40)
       },
   },
   }));
@@ -38,6 +38,7 @@ function SwapPage (){
 
     const swap = (anItem) => {
       dispatch({type: 'SET_OFFER_ITEM_B', payload: anItem});
+
     }
 
     const cancelOffer = () => {
@@ -46,7 +47,6 @@ function SwapPage (){
 
     const confirmOffer = () => {
       history.push('/shop')
-      dispatch({type: 'UPDATE_SHOP_ITEM'})
       dispatch({type: 'POST_OFFER', 
                 payload: {
                   userA: offer?.itemA.user_id,
@@ -64,9 +64,9 @@ function SwapPage (){
         <h2 className="center">For Your...</h2>
               <div className={classes.root}>
                 <Paper elevation={3}>
-                  <ul>
+                  <ul className="center">
                       <li>User: {offer?.itemA.username}</li>
-                      <li>Image: {offer?.itemA.item_image}</li>
+                      <li><img src={offer?.itemA.item_image}/></li>
                       <li>Name: {offer?.itemA.item_name}</li>
                       <li>Description: {offer?.itemA.item_description}</li>
                   </ul>
@@ -79,8 +79,8 @@ function SwapPage (){
             return(
               <div className={classes.root}>
                 <Paper elevation={3}>
-                  <ul key={anItem.id} anItem={anItem}>
-                      <li>Image: {anItem.item_image}</li>
+                  <ul className="center" key={anItem.id} anItem={anItem}>
+                      <li><img src={anItem.item_image}/></li>
                       <li>Name: {anItem.item_name}</li>
                       <li>Description: {anItem.item_description}</li>
                       <Button variant="contained" color="primary" onClick={() => swap(anItem)}>Select</Button>
