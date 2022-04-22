@@ -52,7 +52,7 @@ function ProfileItem({anItem}) {
                             <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
                             <Button variant="contained" color="primary" onClick={handleClick}>edit</Button>
-                            <Button variant="contained" color="primary" onClick={(event) => dispatch({ type:'DELETE_ITEM', payload: anItem.id})}>delete</Button>
+                            <Button variant="contained" color="primary" onClick={(event) => dispatch({ type:'DELETE_ITEM', payload: {id: anItem.id}})}>delete</Button>
                         </ul>
                     </Paper>
                 </div>

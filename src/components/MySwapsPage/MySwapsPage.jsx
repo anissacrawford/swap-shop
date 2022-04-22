@@ -24,10 +24,7 @@ function MySwapsPage (){
         <>
         <ThemeProvider theme={theme}>
         <h1 className="center">My Swaps</h1>
-        <h3>Swap?</h3>
-        <h3>Item image</h3>
-        <h3>Item name</h3>
-        <h3>Item description</h3>
+        <h3>Coming Soon...</h3>
         <Button variant="contained" color="primary" onClick={decline}>decline</Button>
         <Button variant="contained" color="primary" onClick={accept}>accept</Button>
         </ThemeProvider>

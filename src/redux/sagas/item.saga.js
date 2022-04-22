@@ -62,9 +62,9 @@ function* updateItems (action) {
 //delete items from DB 
 function* deleteItems(action) {
     try{
-        console.log(`in delete item saga, ${action.payload}`);
-        yield axios.delete(`/api/item/${action.payload}`)
-        yield put({ type: 'GET_ITEM'})
+        console.log(`in delete item saga, ${action.payload.id}`);
+        yield axios.delete(`/api/item/${action.payload.id}`)
+        yield put({ type: 'GET_PROFILE_ITEM'})
     } catch(err) {
         console.log(err);
     }

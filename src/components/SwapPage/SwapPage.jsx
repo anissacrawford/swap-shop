@@ -20,14 +20,12 @@ const useStyles = makeStyles((theme) => ({
   },
   }));
   
-
-
 function SwapPage (){
     
     const dispatch = useDispatch();
     const history = useHistory();
     const item = useSelector(store => store.item);
-    const offer = useSelector(store => store.offer);
+    const offer = useSelector(store => store?.offer);
     const classes = useStyles();
 
     const theme = createTheme({
@@ -39,7 +37,7 @@ function SwapPage (){
       })
 
     const swap = (anItem) => {
-      dispatch({type: `SET_OFFER_ITEM_B`, payload: anItem});
+      dispatch({type: 'SET_OFFER_ITEM_B', payload: anItem});
     }
 
     const cancelOffer = () => {
@@ -49,6 +47,13 @@ function SwapPage (){
     const confirmOffer = () => {
       history.push('/shop')
       dispatch({type: 'UPDATE_SHOP_ITEM'})
+      dispatch({type: 'POST_OFFER', 
+                payload: {
+                  userA: offer?.itemA.user_id,
+                  itemA: offer?.itemA.id,
+                  userB: offer?.itemB.user_id,
+                  itemB: offer?.itemB.id
+      }})
     }
 
     return (
@@ -60,16 +65,17 @@ function SwapPage (){
               <div className={classes.root}>
                 <Paper elevation={3}>
                   <ul>
-                      <li>Image: {offer.itemA.item_image}</li>
-                      <li>Name: {offer.itemA.item_name}</li>
-                      <li>Description: {offer.itemA.item_description}</li>
+                      <li>User: {offer?.itemA.username}</li>
+                      <li>Image: {offer?.itemA.item_image}</li>
+                      <li>Name: {offer?.itemA.item_name}</li>
+                      <li>Description: {offer?.itemA.item_description}</li>
                   </ul>
                 </Paper>
               </div>
           
         {/* Item B */}
         <h2 className="center">I will trade...</h2>
-        {item.map((anItem) => {
+        {item?.map((anItem) => {
             return(
               <div className={classes.root}>
                 <Paper elevation={3}>

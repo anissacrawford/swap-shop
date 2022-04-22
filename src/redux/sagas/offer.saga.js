@@ -1,6 +1,16 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+//post new items to DB 
+function* postOffer(action) {
+    try{
+        // console.log('in post item saga', action.payload);
+        yield axios.post('/api/offer', action.payload);
+    } catch(err) {
+        console.log(err);   
+    }
+}
+
 // update offers in DB 
 // hold offer 
 function* holdOffer(action) {
@@ -29,6 +39,7 @@ function* updateOffer(action) {
 
 // combines functions 
 function* offerSaga() {
+    yield postOffer('POST_OFFER', postOffer);
     yield takeLatest('GET_PROFILE_ITEM', holdOffer);
     yield takeLatest('UPDATE_SHOP_ITEM', updateOffer);
 }

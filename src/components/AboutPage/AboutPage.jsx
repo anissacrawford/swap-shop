@@ -12,6 +12,9 @@ function AboutPage() {
         <h1>About</h1>
 
         <h2>Next Steps</h2>
+        <p>Image Upload</p>
+        <p>Location Setting</p>
+        <p>User Contact Information</p>
 
         <h2>Technologies Used</h2>
         <p>Node</p>

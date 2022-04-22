@@ -6,7 +6,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 // GET PROFILE ITEM
 router.get('/getProfile', rejectUnauthenticated, (req, res) => {
   const queryText = `
-  SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
+  SELECT "item".user_id, "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
   FROM "user"
   JOIN "item" ON  "user".id = "item".user_id
   WHERE $1 = "item".user_id
@@ -14,11 +14,11 @@ router.get('/getProfile', rejectUnauthenticated, (req, res) => {
   
   pool.query(queryText, [req.user.id])
   .then(result => {
-    console.log("HELLO" , result.rows);
+    console.log("in profile item GET" , result.rows);
     res.send(result.rows);
   })
   .catch(err => {
-    console.log('error in item router GET', err);
+    console.log('error in profile item GET', err);
     res.sendStatus(500);
   })
 });
@@ -26,13 +26,15 @@ router.get('/getProfile', rejectUnauthenticated, (req, res) => {
 // GET SHOP ITEM 
 router.get('/getShop', (req, res) => {
   const queryText = `
-  SELECT "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description FROM "user", "item"
+  SELECT "item".user_id, "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
+  FROM "user"
+  JOIN "item" ON  "user".id = "item".user_id
   WHERE "user".id = "item".user_id
   ORDER BY "item".id DESC;`;
     
   pool.query(queryText)
   .then(result => {
-    console.log("HELLO" , result.rows);
+    console.log("in shop item GET" , result.rows);
     res.send(result.rows);
   })
   .catch(err => {

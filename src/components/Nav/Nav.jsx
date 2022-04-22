@@ -39,7 +39,7 @@ function Nav() {
               My Swaps
             </Link>
 
-            <LogOutButton className="navLink" />
+            <LogOutButton className="navLink"/>
           </>
         )}
 

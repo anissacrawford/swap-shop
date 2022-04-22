@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 function ShopItem ({anItem}){
 
     const history = useHistory();
-    const item = useSelector(store => store.item);
     const classes = useStyles();
     const dispatch = useDispatch();
 
