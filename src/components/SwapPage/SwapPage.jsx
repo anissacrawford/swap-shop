@@ -57,19 +57,15 @@ function SwapPage (){
 
       {/* Item A */}
         <h2 className="center">For Your...</h2>
-        {offer.map((itemA) => {
-            return(
               <div className={classes.root}>
                 <Paper elevation={3}>
-                  <ul key={itemA.id}>
-                      <li>Image: {itemA.item_image}</li>
-                      <li>Name: {itemA.item_name}</li>
-                      <li>Description: {itemA.item_description}</li>
+                  <ul>
+                      <li>Image: {offer.itemA.item_image}</li>
+                      <li>Name: {offer.itemA.item_name}</li>
+                      <li>Description: {offer.itemA.item_description}</li>
                   </ul>
                 </Paper>
               </div>
-            )
-        })}
           
         {/* Item B */}
         <h2 className="center">I will trade...</h2>
@@ -77,7 +73,7 @@ function SwapPage (){
             return(
               <div className={classes.root}>
                 <Paper elevation={3}>
-                  <ul  key={anItem.id} anItem={anItem}>
+                  <ul key={anItem.id} anItem={anItem}>
                       <li>Image: {anItem.item_image}</li>
                       <li>Name: {anItem.item_name}</li>
                       <li>Description: {anItem.item_description}</li>

@@ -1,10 +1,15 @@
-const offer = (state  = [], action) => {
+const offer = (state  = {}, action) => {
     if(action.type == 'CLEAR_OFFER') {
         return {};
     } else if(action.type == 'SET_OFFER_ITEM_A') {
-        return action.payload;
+        return {
+        itemA: action.payload
+        }
     } else if(action.type == 'SET_OFFER_ITEM_B') {
-        return action.payload;
+        return {
+        ...state,
+        itemB: action.payload
+        }
     } else if (action.type == 'OFFER_ONCHANGE') {
         return {
             ...state,
