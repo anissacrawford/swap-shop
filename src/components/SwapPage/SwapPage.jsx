@@ -15,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
       margin: theme.spacing(1),
       width: theme.spacing(40),
-      height: theme.spacing(40)
+      height: theme.spacing(40),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
       },
   },
   }));
