@@ -1,6 +1,6 @@
 //imports 
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
@@ -27,7 +27,8 @@ function MySwapsPage (){
     const dispatch = useDispatch();
     const offer = useSelector(store => store.offer);
     const classes = useStyles();
-    const history = useHistory();
+    const offerId = useSelector(store => store.pendingOffer);
+
 
     const theme = createTheme({
         palette: {
@@ -39,25 +40,26 @@ function MySwapsPage (){
 
     const decline = () => {
       //delete from offer table 
-      history.push('/myswaps');
     }
 
     const accept = () => {
       //swap items on offer table 
-      history.push('/myswaps');
       dispatch({type: 'PUT_OFFER',
-                payload: {
+                payload: { 
+                offerId: offerId[0].id,
                 userA: offer?.itemA.user_id,
-                itemA: offer?.itemA.id,
+                itemA: offer?.itemB.id,
                 userB: offer?.itemB.user_id,
-                itemB: offer?.itemB.id
+                itemB: offer?.itemA.id
       }})
+
     }
       
     return (
         <>
         <ThemeProvider theme={theme}>
         <h1 className="center">My Swaps</h1>
+        {/* map through offers? */}
 
         {/* item B */}
         <h2 className="center">For your...</h2>
@@ -65,10 +67,9 @@ function MySwapsPage (){
             <div className={classes.root}>
               <Paper elevation={3}>
                 <ul>
-                      <li>User: {offer?.itemB.username}</li>
-                      <li><img src={offer?.itemB.item_image}/></li>
-                      <li>Name: {offer?.itemB.item_name}</li>
-                      <li>Description: {offer?.itemB.item_description}</li>
+                  <li><img src={offer?.itemB?.item_image}/></li>
+                  <li>Name: {offer?.itemB?.item_name}</li>
+                  <li>Description: {offer?.itemB?.item_description}</li>
                 </ul>
               </Paper>
             </div>
@@ -80,10 +81,9 @@ function MySwapsPage (){
             <div className={classes.root}>
               <Paper elevation={3}>
                 <ul>
-                      <li>User: {offer?.itemA.username}</li>
-                      <li><img src={offer?.itemA.item_image}/></li>
-                      <li>Name: {offer?.itemA.item_name}</li>
-                      <li>Description: {offer?.itemA.item_description}</li>
+                  <li><img src={offer?.itemA?.item_image}/></li>
+                  <li>Name: {offer?.itemA?.item_name}</li>
+                  <li>Description: {offer?.itemA?.item_description}</li>
                 </ul>
               </Paper>
             </div>

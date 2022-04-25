@@ -4,6 +4,7 @@ import user from './user.reducer';
 import item from './item.reducer';
 import editItem from './edit.reducer';
 import offer from './offer.reducer';
+import pendingOffer from './pendingOffer.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   item, 
   editItem,
-  offer
+  offer,
+  pendingOffer
 });
 
 export default rootReducer;

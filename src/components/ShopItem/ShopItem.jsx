@@ -36,7 +36,7 @@ function ShopItem ({anItem}){
       })
 
     const swap = () => {
-        dispatch({type: 'GET_PROFILE_ITEM', payload: anItem.id});
+        dispatch({type: 'GET_OFFER', payload: anItem.id});
         dispatch({type: 'SET_OFFER_ITEM_A', payload: anItem})
         history.push(`/swap`);
     }

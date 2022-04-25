@@ -24,7 +24,7 @@ router.get('/getProfile', rejectUnauthenticated, (req, res) => {
 });
 
 // GET SHOP ITEM 
-router.get('/getShop', (req, res) => {
+router.get('/getShop', rejectUnauthenticated, (req, res) => {
   const queryText = `
   SELECT "item".user_id, "user".username, "item".id, "item".item_name, "item".item_image, "item".item_description 
   FROM "user"
