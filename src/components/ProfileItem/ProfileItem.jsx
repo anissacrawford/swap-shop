@@ -47,7 +47,7 @@ function ProfileItem({anItem}) {
             <Grid item xs={12} s={6} md={3} lg={4}>
                 <div className={classes.root}>
                     <Paper elevation={3}>
-                        <ul className="center">
+                        <ul className="center" key={anItem.id}>
                             <li><img src={anItem.item_image}/></li>
                             <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>

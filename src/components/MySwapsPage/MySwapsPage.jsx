@@ -90,7 +90,7 @@ function MySwapsPage (){
           <Grid item xs={12} s={6} md={3} lg={4}>
             <div className={classes.root}>
               <Paper elevation={3}>
-                <ul>
+                <ul key={offer.itemA.id}>
                   <li><img src={offer?.itemA?.item_image}/></li>
                   <li>Name: {offer?.itemA?.item_name}</li>
                   <li>Description: {offer?.itemA?.item_description}</li>

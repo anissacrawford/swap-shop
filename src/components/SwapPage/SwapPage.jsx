@@ -57,7 +57,6 @@ function SwapPage (){
                   userB: offer?.itemB.user_id,
                   itemB: offer?.itemB.id
       }})
-
     }
 
     return (
@@ -68,7 +67,7 @@ function SwapPage (){
         <h2 className="center">For Your...</h2>
               <div className={classes.root}>
                 <Paper elevation={3}>
-                  <ul className="center">
+                  <ul className="center" key={offer?.itemA?.id}>
                       <li><img src={offer?.itemA?.item_image}/></li>
                       <li>Name: {offer?.itemA?.item_name}</li>
                       <li>Description: {offer?.itemA?.item_description}</li>

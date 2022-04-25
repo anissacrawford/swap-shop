@@ -35,7 +35,6 @@ function ProfilePage (){
             <h2 className="center">My items</h2>
             <Button variant="contained" color="primary" onClick={() => {history.push('/additem');}}>add item</Button>
                 <div>
-                    
                     {item?.map((anItem) => {
                         return(
                             <ProfileItem key={anItem.id} anItem={anItem} />

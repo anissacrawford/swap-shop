@@ -37,7 +37,8 @@ function ShopItem ({anItem}){
 
     const swap = () => {
         dispatch({type: 'GET_OFFER', payload: anItem.id});
-        dispatch({type: 'SET_OFFER_ITEM_A', payload: anItem})
+        dispatch({type: 'SET_OFFER_ITEM_A', payload: anItem});
+        dispatch({type: 'GET_PROFILE_ITEM'});
         history.push(`/swap`);
     }
 
@@ -46,8 +47,7 @@ function ShopItem ({anItem}){
             <Grid item xs={12} s={6} md={3} lg={4}>
                 <div className={classes.root}>
                     <Paper elevation={3}>
-                        <ul className="center">
-                            {/* <li className="center">User: {anItem.username}</li> */}
+                        <ul className="center" key={anItem.id}>
                             <li><img src={anItem.item_image}/></li>
                             <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
