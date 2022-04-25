@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-// //GET OFFER (gets offers from holding table)
+//GET OFFER (gets offers from holding table)
 router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `
     SELECT * FROM "offer";`;
@@ -35,7 +35,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     })
   });
 
-//ACCEPT OFFER (PUT, UPDATE offer where user id is updated on item)
+//PUT OFFER (updates offer table with switched values)
 router.put('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
     UPDATE "offer" 
@@ -43,6 +43,44 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     WHERE "offer".id = $5;`;
 
   const queryValues = [req.body.userA, req.body.itemA, req.body.userB, req.body.itemB, req.body.offerId];
+  
+  pool.query(queryText, queryValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch(err => {
+          console.log('error in item router PUT', err);
+          res.sendStatus(500);
+      });
+});
+
+//PUT OFFER ITEM A (updated item table with new user id)
+router.put('/itemA', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+    UPDATE "item" 
+    SET "user_id" = $1
+    WHERE "item".id = $2;`;
+
+  const queryValues = [req.body.userA, req.body.itemA];
+  
+  pool.query(queryText, queryValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch(err => {
+          console.log('error in item router PUT', err);
+          res.sendStatus(500);
+      });
+});
+
+//PUT OFFER ITEM B (updated item table with new user id)
+router.put('/itemB', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+    UPDATE "item" 
+    SET "user_id" = $1
+    WHERE "item".id = $2;`;
+
+  const queryValues = [req.body.userB, req.body.itemB];
   
   pool.query(queryText, queryValues)
       .then((result) => {

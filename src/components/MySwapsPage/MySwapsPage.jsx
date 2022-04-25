@@ -27,7 +27,7 @@ function MySwapsPage (){
     const dispatch = useDispatch();
     const offer = useSelector(store => store.offer);
     const classes = useStyles();
-    const offerId = useSelector(store => store.pendingOffer);
+    const offerId = useSelector(store => store.offerId);
 
 
     const theme = createTheme({
@@ -47,12 +47,22 @@ function MySwapsPage (){
       dispatch({type: 'PUT_OFFER',
                 payload: { 
                 offerId: offerId[0].id,
-                userA: offer?.itemA.user_id,
-                itemA: offer?.itemB.id,
-                userB: offer?.itemB.user_id,
-                itemB: offer?.itemA.id
+                userA: offer?.itemB.user_id,
+                itemA: offer?.itemA.id,
+                userB: offer?.itemA.user_id,
+                itemB: offer?.itemB.id
       }})
+      dispatch({type: 'PUT_OFFER_A', 
+                payload: {
+                  userA: offer?.itemB.user_id,
+                  itemA: offer?.itemA.id
+                }});
 
+      dispatch({type: 'PUT_OFFER_B', 
+                payload: {
+                  userB: offer?.itemA.user_id,
+                  itemB: offer?.itemB.id
+                }});
     }
       
     return (

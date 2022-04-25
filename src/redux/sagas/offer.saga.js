@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-
 //post new offers to DB 
 function* postOffer(action) {
     try{
@@ -36,7 +35,7 @@ function* updateOffer(action) {
     }
 }
 
-//switches offer in offer table 
+//switches offers in offer table 
 function* putOffer(action){
     try{
         console.log('in put offer saga', action.payload);
@@ -48,13 +47,35 @@ function* putOffer(action){
     }
 }
 
+//switches user in item table for item A 
+function* putOfferA(action){
+    try{
+        console.log('in put offer A saga', action.payload);
+        yield axios.put('/api/offer/itemA', action.payload);
+        
+    } catch(err){
+        console.log(err);
+    }
+}
+
+//switches user in item table for item B 
+function* putOfferB(action){
+    try{
+        console.log('in put offer B saga', action.payload);
+        yield axios.put('/api/offer/itemB', action.payload);
+    } catch(err){
+        console.log(err);
+    }
+}
+
 // combines functions 
 function* offerSaga() {
     yield takeLatest('POST_OFFER', postOffer);
     yield takeLatest('GET_OFFER', holdOffer);
     yield takeLatest('UPDATE_OFFER', updateOffer);
     yield takeLatest('PUT_OFFER', putOffer);
-    // yield takeLatest('GET_OFFER_GET', getOffer);
+    yield takeLatest('PUT_OFFER_A', putOfferA);
+    yield takeLatest('PUT_OFFER_B', putOfferB);
 }
 
 export default offerSaga; 

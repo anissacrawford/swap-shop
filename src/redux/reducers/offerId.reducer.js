@@ -1,4 +1,4 @@
-const pendingOffer = (state = [], action) => {
+const offerId = (state = [], action) => {
     switch (action.type) {
         case 'SET_OFFER_ID':
             return action.payload;
@@ -7,5 +7,5 @@ const pendingOffer = (state = [], action) => {
     }
 }
 
-export default pendingOffer;
+export default offerId;
 

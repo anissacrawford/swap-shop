@@ -4,7 +4,7 @@ import user from './user.reducer';
 import item from './item.reducer';
 import editItem from './edit.reducer';
 import offer from './offer.reducer';
-import pendingOffer from './pendingOffer.reducer';
+import offerId from './offerId.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   item, 
   editItem,
   offer,
-  pendingOffer
+  offerId
 });
 
 export default rootReducer;
