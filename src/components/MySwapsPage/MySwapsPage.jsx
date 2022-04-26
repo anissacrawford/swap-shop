@@ -1,7 +1,6 @@
 //imports 
 import { useDispatch, useSelector } from 'react-redux';
 
-
 //MUI Styling
 import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
@@ -28,6 +27,7 @@ function MySwapsPage (){
     const offer = useSelector(store => store.offer);
     const classes = useStyles();
     const offerId = useSelector(store => store.offerId);
+    const incomingSwap = useSelector(store => store.incomingSwap);
 
 
     const theme = createTheme({

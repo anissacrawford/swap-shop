@@ -6,12 +6,11 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 //GET OFFER 
 router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `
-    SELECT * FROM "offer"
-    WHERE "`;
-  
-    const queryValues = [req.body.userB, req.user.id]
+    SELECT * FROM "offer";`;
 
-    pool.query(queryText, queryValues)
+    // const queryValues = [req.body.userB, req.user.id]
+
+    pool.query(queryText)
     .then(result => {
       res.send(result.rows);
     })
@@ -20,6 +19,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     })
   });
+
+//GET OFFER (incoming swap)
+router.get('/incomingSwap', rejectUnauthenticated, (req, res) => {
+    const queryText = `
+    SELECT "user_A_id", "user_id", "item_name", "item_image", "item_description", "user_id"
+    FROM "offer", "item";`;
+
+    pool.query(queryText)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('error in offer router GET', err);
+      res.sendStatus(500);
+    })
+});
   
 //POST OFFER 
 router.post('/', rejectUnauthenticated, (req, res) => {

@@ -22,6 +22,15 @@ function* getOffer(action) {
     }
 }
 
+//get offers (incoming swaps)
+function* getIncomingSwap(action) {
+    try {
+        yield axios.get('/api/offer/incomingSwap', action.payload)
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 //update offers in DB 
 function* updateOffer(action) {
     try{
@@ -76,6 +85,7 @@ function* deleteOffer(action){
 function* offerSaga() {
     yield takeLatest('POST_OFFER', postOffer);
     yield takeLatest('GET_OFFER', getOffer);
+    yield takeLatest('GET_INCOMING_SWAP', getIncomingSwap);
     yield takeLatest('UPDATE_OFFER', updateOffer);
     yield takeLatest('PUT_OFFER', putOffer);
     yield takeLatest('PUT_OFFER_A', putOfferA);
