@@ -14,7 +14,6 @@ router.get('/getProfile', rejectUnauthenticated, (req, res) => {
   
   pool.query(queryText, [req.user.id])
   .then(result => {
-    console.log("in profile item GET" , result.rows);
     res.send(result.rows);
   })
   .catch(err => {
@@ -34,7 +33,6 @@ router.get('/getShop', rejectUnauthenticated, (req, res) => {
     
   pool.query(queryText)
   .then(result => {
-    console.log("in shop item GET" , result.rows);
     res.send(result.rows);
   })
   .catch(err => {

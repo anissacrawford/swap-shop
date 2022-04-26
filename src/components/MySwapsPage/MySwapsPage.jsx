@@ -40,6 +40,7 @@ function MySwapsPage (){
 
     const handleDecline = () => {
       //delete from offer table 
+      console.log('ID', offerId);
       dispatch({type: 'DELETE_OFFER',
                 payload: offerId})
     }
@@ -48,18 +49,19 @@ function MySwapsPage (){
       //swap items on offer table 
       dispatch({type: 'PUT_OFFER',
                 payload: { 
-                offerId: offerId[0].id,
-                userA: offer?.itemB.user_id,
-                itemA: offer?.itemA.id,
-                userB: offer?.itemA.user_id,
-                itemB: offer?.itemB.id
-      }})
+                  offerId: offerId[0].id,
+                  userA: offer?.itemB.user_id,
+                  itemA: offer?.itemA.id,
+                  userB: offer?.itemA.user_id,
+                  itemB: offer?.itemB.id
+                }})
+      //updates user id of item A
       dispatch({type: 'PUT_OFFER_A', 
                 payload: {
                   userA: offer?.itemB.user_id,
                   itemA: offer?.itemA.id
                 }});
-
+      //updates user id of item B 
       dispatch({type: 'PUT_OFFER_B', 
                 payload: {
                   userB: offer?.itemA.user_id,
@@ -67,31 +69,13 @@ function MySwapsPage (){
                 }});
     }
     
-    // if (offer.itemB.user_id = 13){
     return (
         <>
         <ThemeProvider theme={theme}>
         <h1 className="center">My Swaps</h1>
-        {/* map through offers? */}
-
-        {/* if user B = user id, show offers */}
-
-        {/* item B */}
-        <h2 className="center">For your...</h2>
-          <Grid item xs={12} s={6} md={3} lg={4}>
-            <div className={classes.root}>
-              <Paper elevation={3}>
-                <ul>
-                  <li><img src={offer?.itemB?.item_image}/></li>
-                  <li>Name: {offer?.itemB?.item_name}</li>
-                  <li>Description: {offer?.itemB?.item_description}</li>
-                </ul>
-              </Paper>
-            </div>
-          </Grid>
 
         {/* item A */}
-        <h2 className="center">They will trade...</h2>
+        <h2 className="center">For your...</h2>
           <Grid item xs={12} s={6} md={3} lg={4}>
             <div className={classes.root}>
               <Paper elevation={3}>
@@ -104,17 +88,26 @@ function MySwapsPage (){
             </div>
           </Grid>
 
+        {/* item B */}
+        <h2 className="center">They will trade...</h2>
+          <Grid item xs={12} s={6} md={3} lg={4}>
+            <div className={classes.root}>
+              <Paper elevation={3}>
+                <ul>
+                  <li><img src={offer?.itemB?.item_image}/></li>
+                  <li>Name: {offer?.itemB?.item_name}</li>
+                  <li>Description: {offer?.itemB?.item_description}</li>
+                </ul>
+              </Paper>
+            </div>
+          </Grid>
+
         {/* buttons */}
         <Button variant="contained" color="primary" onClick={handleDecline}>decline</Button>
         <Button variant="contained" color="primary" onClick={handleAccept}>accept</Button>
         </ThemeProvider>
         </>
     )
-  // } else {
-  //     return (
-  //       <h3>No swaps available</h3>
-  //     )
-  //   }
 }
 
 export default MySwapsPage;

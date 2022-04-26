@@ -3,12 +3,15 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-//GET OFFER (gets offers from holding table)
+//GET OFFER 
 router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `
-    SELECT * FROM "offer";`;
+    SELECT * FROM "offer"
+    WHERE "`;
   
-    pool.query(queryText)
+    const queryValues = [req.body.userB, req.user.id]
+
+    pool.query(queryText, queryValues)
     .then(result => {
       res.send(result.rows);
     })
@@ -18,7 +21,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
   });
   
-//POST OFFER (posts offer to offer table)
+//POST OFFER 
 router.post('/', rejectUnauthenticated, (req, res) => {
     const queryText = `
     INSERT INTO "offer" ("user_A_id", "item_A_id", "user_B_id", "item_B_id")
@@ -54,7 +57,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
       });
 });
 
-//PUT OFFER ITEM A (updated item table with new user id)
+//PUT OFFER ITEM A (updates item table with new user id)
 router.put('/itemA', rejectUnauthenticated, (req, res) => {
   const queryText = `
     UPDATE "item" 
@@ -73,7 +76,7 @@ router.put('/itemA', rejectUnauthenticated, (req, res) => {
       });
 });
 
-//PUT OFFER ITEM B (updated item table with new user id)
+//PUT OFFER ITEM B (updates item table with new user id)
 router.put('/itemB', rejectUnauthenticated, (req, res) => {
   const queryText = `
     UPDATE "item" 
@@ -92,13 +95,13 @@ router.put('/itemB', rejectUnauthenticated, (req, res) => {
       });
 });
 
-//DELETE OFFER (DELETE from offer table)
-router.delete('/', rejectUnauthenticated, (req, res) => {
+//DELETE OFFER 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
   DELETE FROM "offer"  
   WHERE "offer".id = $1;`;
 
-  const queryValues = [req.offerId];
+  const queryValues = [req.params.id];
 
   pool.query(queryText, queryValues)
     .then((result) => { 
