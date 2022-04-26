@@ -38,11 +38,13 @@ function MySwapsPage (){
         }
       })
 
-    const decline = () => {
+    const handleDecline = () => {
       //delete from offer table 
+      dispatch({type: 'DELETE_OFFER',
+                payload: offerId})
     }
 
-    const accept = () => {
+    const handleAccept = () => {
       //swap items on offer table 
       dispatch({type: 'PUT_OFFER',
                 payload: { 
@@ -64,12 +66,15 @@ function MySwapsPage (){
                   itemB: offer?.itemB.id
                 }});
     }
-      
+    
+    // if (offer.itemB.user_id = 13){
     return (
         <>
         <ThemeProvider theme={theme}>
         <h1 className="center">My Swaps</h1>
         {/* map through offers? */}
+
+        {/* if user B = user id, show offers */}
 
         {/* item B */}
         <h2 className="center">For your...</h2>
@@ -90,7 +95,7 @@ function MySwapsPage (){
           <Grid item xs={12} s={6} md={3} lg={4}>
             <div className={classes.root}>
               <Paper elevation={3}>
-                <ul key={offer.itemA.id}>
+                <ul>
                   <li><img src={offer?.itemA?.item_image}/></li>
                   <li>Name: {offer?.itemA?.item_name}</li>
                   <li>Description: {offer?.itemA?.item_description}</li>
@@ -100,11 +105,16 @@ function MySwapsPage (){
           </Grid>
 
         {/* buttons */}
-        <Button variant="contained" color="primary" onClick={decline}>decline</Button>
-        <Button variant="contained" color="primary" onClick={accept}>accept</Button>
+        <Button variant="contained" color="primary" onClick={handleDecline}>decline</Button>
+        <Button variant="contained" color="primary" onClick={handleAccept}>accept</Button>
         </ThemeProvider>
         </>
     )
+  // } else {
+  //     return (
+  //       <h3>No swaps available</h3>
+  //     )
+  //   }
 }
 
 export default MySwapsPage;

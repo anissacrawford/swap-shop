@@ -68,6 +68,16 @@ function* putOfferB(action){
     }
 }
 
+//deletes offer from offer table 
+function* deleteOffer(){
+    try{
+        yield axios.delete(`/api/item`)
+        yield put({ type: 'GET_OFFER'})
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 // combines functions 
 function* offerSaga() {
     yield takeLatest('POST_OFFER', postOffer);
@@ -76,6 +86,7 @@ function* offerSaga() {
     yield takeLatest('PUT_OFFER', putOffer);
     yield takeLatest('PUT_OFFER_A', putOfferA);
     yield takeLatest('PUT_OFFER_B', putOfferB);
+    yield takeLatest('DELETE_OFFER', deleteOffer); 
 }
 
 export default offerSaga; 

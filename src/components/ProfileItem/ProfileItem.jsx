@@ -37,9 +37,15 @@ function ProfileItem({anItem}) {
       })
 
 
-    const handleClick = () => {
-        dispatch({type: 'SET_EDIT_ITEM', payload: anItem})
+    const handleEdit = () => {
+        dispatch({type: 'SET_EDIT_ITEM', 
+                  payload: anItem})
         history.push(`/edit/${anItem.id}`);
+    }
+
+    const handleDelete = () => {
+        dispatch({type:'DELETE_ITEM', 
+                  payload: {id: anItem.id}})
     }
 
     return (
@@ -51,8 +57,9 @@ function ProfileItem({anItem}) {
                             <li><img src={anItem.item_image}/></li>
                             <li>Item: {anItem.item_name}</li>
                             <li>Description: {anItem.item_description}</li>
-                            <Button variant="contained" color="primary" onClick={handleClick}>edit</Button>
-                            <Button variant="contained" color="primary" onClick={(event) => dispatch({ type:'DELETE_ITEM', payload: {id: anItem.id}})}>delete</Button>
+                            
+                            <Button variant="contained" color="primary" onClick={handleEdit}>edit</Button>
+                            <Button variant="contained" color="primary" onClick={handleDelete}>delete</Button>
                         </ul>
                     </Paper>
                 </div>

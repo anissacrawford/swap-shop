@@ -93,5 +93,21 @@ router.put('/itemB', rejectUnauthenticated, (req, res) => {
 });
 
 //DELETE OFFER (DELETE from offer table)
+router.delete('/', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+  DELETE FROM "offer"  
+  WHERE "offer".id = $1;`;
+
+  const queryValues = [req.offerId];
+
+  pool.query(queryText, queryValues)
+    .then((result) => { 
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.log('error in item router DELETE', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
