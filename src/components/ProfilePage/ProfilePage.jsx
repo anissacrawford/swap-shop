@@ -8,6 +8,7 @@ import ProfileItem from '../ProfileItem/ProfileItem';
 //MUI Styling 
 import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import {Grid } from '@material-ui/core';
 
 function ProfilePage (){
 
@@ -33,7 +34,13 @@ function ProfilePage (){
         <ThemeProvider theme={theme}>
             <h1 className="center">{user.username}'s Profile</h1>
             <h2 className="center">My items</h2>
+            <Grid item xs={12} s={6} md={3} lg={4}   
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center">
             <Button variant="contained" color="primary" onClick={() => {history.push('/additem');}}>add item</Button>
+            </Grid>
                 <div>
                     {item?.map((anItem) => {
                         return(

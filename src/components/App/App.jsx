@@ -1,3 +1,4 @@
+//imports 
 import React, { useEffect } from 'react';
 import {
   HashRouter as Router,
@@ -24,6 +25,7 @@ import SwapPage from '../SwapPage/SwapPage';
 import MySwapsPage from '../MySwapsPage/MySwapsPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
 import EditPage from '../EditPage/EditPage';
+import BottomNav from '../BottomNav/BottomNav';
 
 import './App.css';
 
@@ -125,6 +127,8 @@ function App() {
         </ProtectedRoute>
 
         <Footer />
+
+          <BottomNav/>
       </div>
     </Router>
   );

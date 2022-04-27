@@ -118,9 +118,24 @@ li {
 .center {
   text-align: center;
   justify-content: center;
+  padding-left: 0px;
 }
 
 img {
   height: 200px;
   width: 200px;
+}
+
+.username {
+  font-weight: bold ;
+  color: grey;
+  padding-bottom: 10px;
+}
+
+.padding {
+  padding-top: 30px;
+}
+
+.bold {
+  font-weight: bold;
 }

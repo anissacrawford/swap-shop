@@ -1,12 +1,14 @@
 //imports
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +51,7 @@ function SwapPage (){
     }
 
     const confirmOffer = () => {
+      swal("SWAP SENT");
       history.push('/shop')
       dispatch({type: 'POST_OFFER', 
                 payload: {

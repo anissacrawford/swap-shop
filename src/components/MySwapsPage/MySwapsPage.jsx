@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
       margin: theme.spacing(1),
       width: theme.spacing(40),
-      height: theme.spacing(40),
+      height: theme.spacing(45),
       },
   },
   }));
@@ -76,13 +76,17 @@ function MySwapsPage (){
 
         {/* item A */}
         <h2 className="center">For your...</h2>
-          <Grid item xs={12} s={6} md={3} lg={4}>
+          <Grid item xs={12} s={6} md={3} lg={4}
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center">
             <div className={classes.root}>
-              <Paper elevation={3}>
-                <ul>
+              <Paper className="padding" elevation={10}>
+                <ul className="center">
                   <li><img src={offer?.itemA?.item_image}/></li>
-                  <li>Name: {offer?.itemA?.item_name}</li>
-                  <li>Description: {offer?.itemA?.item_description}</li>
+                  <li className="bold">{offer?.itemA?.item_name}</li>
+                  <li>{offer?.itemA?.item_description}</li>
                 </ul>
               </Paper>
             </div>
@@ -90,21 +94,32 @@ function MySwapsPage (){
 
         {/* item B */}
         <h2 className="center">They will trade...</h2>
-          <Grid item xs={12} s={6} md={3} lg={4}>
+          <Grid item xs={12} s={6} md={3} lg={4}
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center">
             <div className={classes.root}>
-              <Paper elevation={3}>
-                <ul>
+              <Paper elevation={10}>
+                <ul className="center">
+                  <li className="username">{offer?.itemB?.username}</li>
                   <li><img src={offer?.itemB?.item_image}/></li>
-                  <li>Name: {offer?.itemB?.item_name}</li>
-                  <li>Description: {offer?.itemB?.item_description}</li>
+                  <li className="bold">{offer?.itemB?.item_name}</li>
+                  <li>{offer?.itemB?.item_description}</li>
                 </ul>
               </Paper>
             </div>
           </Grid>
 
         {/* buttons */}
-        <Button variant="contained" color="primary" onClick={handleDecline}>decline</Button>
-        <Button variant="contained" color="primary" onClick={handleAccept}>accept</Button>
+        <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        <Button className="spacing" variant="contained" color="primary" onClick={handleDecline}>decline</Button>
+        <Button className="spacing" variant="contained" color="primary" onClick={handleAccept}>accept</Button>
+        </Grid>
         </ThemeProvider>
         </>
     )
