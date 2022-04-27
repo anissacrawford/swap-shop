@@ -1,13 +1,14 @@
 //imports
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import {Grid } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
       margin: theme.spacing(1),
       width: theme.spacing(40),
-      height: theme.spacing(40),
+      height: theme.spacing(45),
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center'
@@ -41,7 +42,7 @@ function SwapPage (){
         }
       })
 
-    const swap = (anItem) => {
+    const handleSelect = (anItem) => {
       dispatch({type: 'SET_OFFER_ITEM_B', payload: anItem});
 
     }
@@ -51,7 +52,16 @@ function SwapPage (){
     }
 
     const confirmOffer = () => {
-      swal("SWAP SENT");
+      Swal.fire({
+        title: "Offer Sent",
+        icon: 'success',
+        background: 'white',
+        color: 'black',
+        confirmButtonColor: '#36802d',
+        cancelButtonColor: '#36802d',
+        });
+
+
       history.push('/shop')
       dispatch({type: 'POST_OFFER', 
                 payload: {
@@ -64,16 +74,21 @@ function SwapPage (){
 
     return (
       <ThemeProvider theme={theme}>
+      <Grid item xs={12} s={6} md={3} lg={4}
+                    container
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center">
       <h1 className="center">Swap Page</h1>
 
       {/* Item A */}
         <h2 className="center">For Your...</h2>
               <div className={classes.root}>
-                <Paper elevation={3}>
+                <Paper elevation={10}>
                   <ul className="center" key={offer?.itemA?.id}>
                       <li><img src={offer?.itemA?.item_image}/></li>
-                      <li>Name: {offer?.itemA?.item_name}</li>
-                      <li>Description: {offer?.itemA?.item_description}</li>
+                      <li className="bold">{offer?.itemA?.item_name}</li>
+                      <li>{offer?.itemA?.item_description}</li>
                   </ul>
                 </Paper>
               </div>
@@ -83,20 +98,27 @@ function SwapPage (){
         {item?.map((anItem) => {
             return(
               <div className={classes.root}>
-                <Paper elevation={3}>
+                <Paper elevation={10}>
                   <ul className="center" key={anItem.id} anItem={anItem}>
                       <li><img src={anItem.item_image}/></li>
-                      <li>Name: {anItem.item_name}</li>
-                      <li>Description: {anItem.item_description}</li>
-                      <Button variant="contained" color="primary" onClick={() => swap(anItem)}>Select</Button>
+                      <li className="className">{anItem.item_name}</li>
+                      <li>{anItem.item_description}</li>
+                      <Button variant="contained" color="primary" onClick={() => handleSelect(anItem)}>Select</Button>
                   </ul>
                 </Paper>
               </div>
             )
         })}
+        </Grid>
 
+        <Grid item xs={12} s={6} md={3} lg={4}
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center">
         <Button variant="contained" color="primary" onClick={cancelOffer}>Cancel</Button>
         <Button variant="contained" color="primary" onClick={confirmOffer}>Confirm</Button>
+        </Grid>
         </ThemeProvider>
     )
 }

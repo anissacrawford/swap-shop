@@ -1,5 +1,6 @@
 //imports 
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 //MUI Styling
 import Button from '@material-ui/core/Button';
@@ -9,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
       display: 'flex',
@@ -16,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
       margin: theme.spacing(1),
       width: theme.spacing(40),
-      height: theme.spacing(45),
+      height: theme.spacing(45)
       },
   },
   }));
@@ -39,10 +41,27 @@ function MySwapsPage (){
       })
 
     const handleDecline = () => {
+
+      Swal.fire({
+        title: "Are you sure you want to decline this offer?",
+        text: 'This action is permanent and cannot be undone.',
+        icon: 'warning',
+        background: 'white',
+        color: 'black',
+        showCancelButton: true,
+        confirmButtonColor: '#36802d',
+        cancelButtonColor: '#36802d',
+        confirmButtonText: 'Decline'
+    }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch({type: 'DELETE_OFFER',
+          payload: offerId})
+        }
+    })
       //delete from offer table 
       console.log('ID', offerId);
-      dispatch({type: 'DELETE_OFFER',
-                payload: offerId})
+      // dispatch({type: 'DELETE_OFFER',
+      //           payload: offerId})
     }
 
     const handleAccept = () => {

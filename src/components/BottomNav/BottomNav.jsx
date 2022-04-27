@@ -1,5 +1,7 @@
 //imports 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 //MUI Styling
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,21 +14,23 @@ import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
 const useStyles = makeStyles({
   root: {
-    width: 390,
-    backgroundColor: "#36802D",
+    width: '100%',
+    backgroundColor: '#36802D',
     position: 'fixed',
-        bottom: 0
+    bottom: 0
   },
 });
 
-
 function BottomNav () {
 
+    const user = useSelector((store) => store.user);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
     return (
+        
         <div>
+        {user.id && (
         <BottomNavigation
           className={classes.root}
           onChange={(event, newValue) => {
@@ -34,11 +38,13 @@ function BottomNav () {
           }}
           showLabels
         >
-          <BottomNavigationAction label="Shop" icon={<HomeIcon/>} />
-          <BottomNavigationAction label="Profile" icon={<AccountBoxIcon/>}/>
-          <BottomNavigationAction label="My Swaps" icon={<SwapHorizIcon/>}/>
+          <BottomNavigationAction component={Link} to='/shop' label="Shop" icon={<HomeIcon/>}/>
+          <BottomNavigationAction component={Link} to='/profile' label="Profile" icon={<AccountBoxIcon/>}/>
+          <BottomNavigationAction component={Link} to='/mySwaps' label="My Swaps" icon={<SwapHorizIcon/>}/>
         </BottomNavigation>
+        )}
         </div>
+        
     )
 }
 
