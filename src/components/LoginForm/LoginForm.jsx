@@ -1,11 +1,11 @@
 //imports 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 //MUI styling 
 import Button from '@material-ui/core/Button';
-import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -41,41 +41,41 @@ function LoginForm() {
 
   return (
     <ThemeProvider theme={theme}>
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <TextField
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <TextField
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <Button variant="contained" color="primary" type="submit" name="submit" value="Log In">Log In</Button>
-      </div>
-    </form>
+      <form className="formPanel" onSubmit={login}>
+        <h2>Login</h2>
+        {errors.loginMessage && (
+          <h3 className="alert" role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+        <div>
+          <label htmlFor="username">
+            Username:
+            <TextField
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Password:
+            <TextField
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <Button variant="contained" color="primary" type="submit" name="submit" value="Log In">Log In</Button>
+        </div>
+      </form>
     </ThemeProvider>
   );
 }

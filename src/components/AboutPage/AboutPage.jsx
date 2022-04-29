@@ -12,7 +12,7 @@ function AboutPage() {
         <h1>About</h1>
 
         <h2>Next Steps</h2>
-        <p>Image Upload</p>
+        {/* <p>Image Upload</p> */}
         <p>Location Setting</p>
         <p>User Contact Information</p>
 
@@ -20,15 +20,19 @@ function AboutPage() {
         <p>Node</p>
         <p>Express</p>
         <p>React</p>
+        <p>React-Redux</p>
+        <p>Redux-Saga</p>
         <p>Postgresql</p>
-        <p>Heroku</p>
+        <p>Sweet Alert 2</p>
         <p>MUI</p>
-        
+
 
         <h2>Thank You</h2>
         <p>Instructors</p>
         <p>Butler Cohort</p>
         <p>Prime Digital Academy</p>
+        <p>Friends and Family</p>
+        <p>Audience</p>
       </div>
     </div>
   );

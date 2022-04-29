@@ -6,7 +6,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 
 //MUI styling 
 import Button from '@material-ui/core/Button';
-import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
 function LandingPage() {
@@ -28,26 +28,26 @@ function LandingPage() {
 
   return (
     <ThemeProvider theme={theme}>
-    <div className="container">
-      <h2>{heading}</h2>
+      <div className="container">
+        <h2>{heading}</h2>
 
-      <div className="grid">
-        <div className="grid-col grid-col_8">
-          <p></p>
+        <div className="grid">
+          <div className="grid-col grid-col_8">
+            <p></p>
 
-        </div>
-        <div className="grid-col grid-col_4">
-          <RegisterForm />
+          </div>
+          <div className="grid-col grid-col_4">
+            <RegisterForm />
 
-          <center>
-            <h4>Already a Member?</h4>
-            <Button variant="contained" color="primary" className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </Button>
-          </center>
+            <center>
+              <h4>Already a Member?</h4>
+              <Button variant="contained" color="primary" className="btn btn_sizeSm" onClick={onLogin}>
+                Login
+              </Button>
+            </center>
+          </div>
         </div>
       </div>
-    </div>
     </ThemeProvider>
   );
 }
