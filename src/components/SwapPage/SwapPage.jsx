@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 function SwapPage() {
 
-  const [flag, setFlag] = React.useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
   const item = useSelector(store => store.item);
@@ -41,15 +40,11 @@ function SwapPage() {
     palette: {
       primary: {
         main: '#36802d'
-      },
-      secondary: {
-        main: '#41b62c'
       }
     }
   })
 
   const handleSelect = (anItem) => {
-    setFlag(!flag);
     dispatch({ type: 'SET_OFFER_ITEM_B', payload: anItem });
   }
 
@@ -110,7 +105,7 @@ function SwapPage() {
                   <li><img src={anItem.item_image} /></li>
                   <li className="className">{anItem.item_name}</li>
                   <li>{anItem.item_description}</li>
-                  <Button color={flag ? "primary" : "secondary"} variant="contained" onClick={() => handleSelect(anItem)}>Select</Button>
+                  <Button color="primary" variant="contained" onClick={() => handleSelect(anItem)}>Select</Button>
                 </ul>
               </Paper>
             </div>

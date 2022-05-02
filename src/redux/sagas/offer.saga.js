@@ -46,7 +46,6 @@ function* updateOffer(action) {
 function* putOfferA(action) {
     try {
         yield axios.put('/api/offer/itemA', action.payload);
-        yield put({ type: 'GET_OFFER', payload: action.payload});
     } catch (err) {
         console.log(err);
     }
@@ -56,7 +55,6 @@ function* putOfferA(action) {
 function* putOfferB(action) {
     try {
         yield axios.put('/api/offer/itemB', action.payload);
-        yield put({ type: 'GET_OFFER', payload: action.payload});
     } catch (err) {
         console.log(err);
     }
@@ -66,7 +64,7 @@ function* putOfferB(action) {
 function* deleteOffer(action) {
     try {
         yield axios.delete(`/api/offer/${action.payload}`)
-        yield put({ type: 'GET_OFFER', payload: action.payload});
+        yield put({ type: 'GET_INCOMING_SWAP'});
     } catch (err) {
         console.log(err);
     }
