@@ -21,16 +21,16 @@ const useStyles = makeStyles({
   },
 });
 
-function BottomNav () {
+function BottomNav() {
 
-    const user = useSelector((store) => store.user);
-    const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+  const user = useSelector((store) => store.user);
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
 
-    return (
-        
-        <div>
-        {user.id && (
+  return (
+
+    <div>
+      {user.id && (
         <BottomNavigation
           className={classes.root}
           onChange={(event, newValue) => {
@@ -38,14 +38,14 @@ function BottomNav () {
           }}
           showLabels
         >
-          <BottomNavigationAction component={Link} to='/shop' label="Shop" icon={<HomeIcon/>}/>
-          <BottomNavigationAction component={Link} to='/profile' label="Profile" icon={<AccountBoxIcon/>}/>
-          <BottomNavigationAction component={Link} to='/mySwaps' label="My Swaps" icon={<SwapHorizIcon/>}/>
+          <BottomNavigationAction component={Link} to='/shop' label="Shop" icon={<HomeIcon />} />
+          <BottomNavigationAction component={Link} to='/profile' label="Profile" icon={<AccountBoxIcon />} />
+          <BottomNavigationAction component={Link} to='/mySwaps' label="My Swaps" icon={<SwapHorizIcon />} />
         </BottomNavigation>
-        )}
-        </div>
-        
-    )
+      )}
+    </div>
+
+  )
 }
 
 export default BottomNav;

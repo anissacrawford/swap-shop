@@ -4,33 +4,33 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //MUI Styling 
 import Button from '@material-ui/core/Button';
-import {createTheme, ThemeProvider} from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 
 function RegisterForm() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [emailAddress, setEmailAddress] = useState('');
-    const errors = useSelector((store) => store.errors);
-    const dispatch = useDispatch();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const errors = useSelector((store) => store.errors);
+  const dispatch = useDispatch();
 
-    const registerUser = (event) => {
-      event.preventDefault();
+  const registerUser = (event) => {
+    event.preventDefault();
 
-      dispatch({
-        type: 'REGISTER',
-        payload: {
-          username: username,
-          password: password,
-          firstName: firstName,
-          lastName: lastName,
-          emailAddress: emailAddress
-        },
-      });
-    }; // end registerUser
+    dispatch({
+      type: 'REGISTER',
+      payload: {
+        username: username,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        emailAddress: emailAddress
+      },
+    });
+  }; // end registerUser
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
@@ -117,7 +117,7 @@ function RegisterForm() {
         {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
         <Button variant="contained" color="primary" type="submit" name="submit" value="Register">Register </Button>
       </div>
-      
+
     </form>
   );
 }
