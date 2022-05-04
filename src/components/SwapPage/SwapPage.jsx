@@ -81,7 +81,7 @@ function SwapPage() {
         direction="column"
         justifyContent="center"
         alignItems="center">
-        <h1 className="center">Swap Page</h1>
+        <h1 className="center">My Swaps</h1>
 
         {/* Item A */}
         <h2 className="center">For Your...</h2>
