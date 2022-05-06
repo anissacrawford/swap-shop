@@ -4,7 +4,7 @@
 Duration: 2 Week Sprint
 
 ## Screen Shot
-![alt text](/images/Profile.jpg)
+![alt text](http:/images/Profile.jpg)
 ![alt text](/images/TheShop.jpg)
 ![alt text](/images/MySwap1.jpg)
 ![alt text](/images/MySwap2.jpg)
