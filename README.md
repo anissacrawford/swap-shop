@@ -4,10 +4,10 @@
 Duration: 2 Week Sprint
 
 ## Screen Shot
-![alt text](http:/images/Profile.jpg)
-![alt text](/images/TheShop.jpg)
-![alt text](/images/MySwap1.jpg)
-![alt text](/images/MySwap2.jpg)
+![alt text](/images/Profile.png)
+![alt text](/images/TheShop.png)
+![alt text](/images/MySwap1.png)
+![alt text](/images/MySwap2.png)
 
 ## Installation
 1. Create a database named swapshop,
